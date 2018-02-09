@@ -1,0 +1,40 @@
+/bin/: original basic binaries within distribution rootfs.
+/boot/: save boot image\initrd\kernel config file.
+/cdrom/: cd rom mount point.
+/dev/: system devices directory.
+  |-disk: search by different mode.e.g.:ls /dev/disk/by-id/
+  |-null: null device, to dump information.
+  |-random: random device, to get random number, it'll block if there is new random number
+  |-sd<a..z>[1..9]: hardware disk devices.
+  |-urandom: ublock random device.
+  |-zero: zero device, to generate zero.
+/etc: save system config files.
+  |-profile,bash.bashrc: system profile.
+  |-resolv.conf: temporary dns server config file.
+  |-init/: save all config files for initial services.
+  |-rc.d/rc<n>.d/: save initial service scripts, <n> indicates the start level.
+  |-dhcp/dhclient.conf: dhchp client config file.
+  |-dhcp/dhcpd.conf: dhcp service config file.
+  |-network/interfaces: network config file.
+/home/: save all user home directory
+  |-~/: current user's home directory
+    |-.profile,.bashrc: user profile.
+    |-.bash_history: bash history
+/lib/: system library directory.
+/media/: the media mount point, e.g.: cd, usb
+/mnt/: the root director of normal mount point
+/opt/: optional 3rd part application, e.g.: cross-compiler.
+/proc/: current processor\system information
+  |-cpuinfo: show cpu information
+  |-cmdline: system command line information
+  |-meminfo: memory information
+  |-modules: default loaded modules information.
+  |-interrupts: interrupt information.
+  |-iomem: io mapping information
+  |-devices: devices information
+/root/: root user home dirctory
+/sbin/: original system binaries within distribution rootfs.
+/sys/: system fs, to represent current system bus\device\driver architecture.
+/usr/: user directory, a simplified rootfs from new applications installing by user.
+  |-local: a simplified rootfs from source code building and installing by user. 
+/var/: save variable directories or files, e.g.:log,cache,backup

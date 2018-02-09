@@ -1,0 +1,10 @@
+Setup Sogou input method:
+  1. im-config: Seclec fcitx
+  2. fcitx-config-gtk3: + uncheck "Only Show Current Language", search sogou
+apt-cache showsrc <packagename>: show all dependences by packagename, by this way, can remove all packages installed by apt-get build-dep <packagenmae>
+setup swap partition:
+  mkswap /dev/sda5
+  swapon /dev/sda5
+  add '/dev/sda5 swap swap defaults 0 0' into /etc/fstab
+config cloud-init
+  sudo dpkg-reconfigure cloud-init

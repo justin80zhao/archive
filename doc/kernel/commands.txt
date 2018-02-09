@@ -1,0 +1,117 @@
+sudo -i: change to root user.
+zgrep: grep in a zip file
+apt-get source xxxx: get source code for xxxx
+apt-get build-dep xxxx: install the whole build dependence for xxxx
+zgrep xxx /proc/config.gz: search configuration for current kernel.
+dpkg: package tool for installation, removing, management, checking
+	dpkg -S xxx: search which package a file belongs to.
+	dpkg -l: list all installed packags.
+./configure --help: get the help information for the configuration
+route: print route information.
+route add default gw xxx.xxx.xxx.xxx: add default gateway.
+qemu-img convert -O raw cloud.dl cloud.raw: convert image file format.
+fdisk -l <device|file>: list all partitions information on the device or file.
+sudo lsblk -o name,mountpoint,label,size,uuid: show detail block list.
+lsb_release -a: show ubuntu version information
+uname -a: show kernel version information
+dmesg: show all kernel message from boot up
+nm: list symbols from object files
+dd if=<input file> of=<output file> bs=<block size> skip=<skip bs num>: convert and copy file.
+	clone disk: dd if=/dev/sda1 of=rootfs.img
+e2label /dev/sda1 <label-name>: set partition's label
+depmod: module dependence analyze
+locale-gen en_US.UTF-8: generate local environments
+sudo mkimage -A arm -O linux -T ramdisk -C gzip -a 0 -e 0 -n uInitrd -d /boot/<source initrd.img> <target uInitrd>: convert initrd to uInitrd
+sudo mkimage -A arm -O linux -T kernel -C none -a 0x00080000 -e 0x00080000 -n "Image Name" -d /boot/<source vmlinuz> <target uImage>: convert vmlinuz to uImage
+tail: show file tail
+2>&1: add it at the end of commands, let errors output to standard output device, e.g.: display
+free: show memory current status.
+Parameter Expansion: bash parameter expansion
+  1. ${para}: get 'para' value.
+  2. ${#para}: get 'para' length.
+  3. ${para#*word}: cut 'para' at first 'word' from left.
+  4. ${para##*word}: cut 'para' at 'word' as far as possible from left.
+  5. ${para%word*}: cut 'para' at first 'word' from right.
+  6. ${para%%word*}: cut 'para' at 'word' as far as possible from right.
+  7. ${para/pattern/string}: replace first 'pattern' with 'string' in 'para'.
+  8. ${para//pattern/string}: replace all 'pattern' with 'string' in 'para'.
+  9. ${para:idx:len}: cut 'para' from 'idx' with 'len' characters.
+sed: stream edit tool
+  sed -i ''$startline','$endline's/^/string&/g' file: insert string before head from $startline to $endline in file.
+  sed -i ''$startline','$endline's/$/&string/g' file: append string after tail from $startline to $endline in file.
+expr: expression calculate, e.g.: expr 10 \* 20
+let a=<expression>: expression calculate
+perf: system performance analyser based on kernel trace point
+	perf top -p <pid> -g --no-children
+	perf stat
+	perf record -a, perf report, perf script: record perf data and parse the data.
+strace: system call tracer
+cut -cn1-n2: string cutting
+apt-get source linux-image-$(uname -r): download current kernel source code with follows into /etc/apt/sources.list
+  deb-src http://ports.ubuntu.com/ubuntu-ports/ vivid main restricted universe multiverse
+  deb-src http://ports.ubuntu.com/ubuntu-ports/ vivid-updates main restricted universe multiverse
+  deb-src http://ports.ubuntu.com/ubuntu-ports/ vivid-security main restricted universe multiverse
+dpkg-buildpackage: build package gotten by apt-get source xxx
+use loop device to associate file and disk:
+  losetup /dev/loop0 example.img
+  mkfs.ext4 /dev/loop0
+  mount /dev/loop0 /mnt/dir
+xargs: cut too many arguments to suitable number and convery to command part by part
+md5sum: check md5sum
+  find ./ -type f -print0 | xargs -0 md5sum > ./my.md5
+  md5sum -c my.md5
+rm -rf `cat filelist`: remove a list of files in filelist.
+tr -c -d -s ['set1'] ['set2']: Simple string stream editor.
+	echo "Hello   123 World%^"|tr -d '0-9'|tr -s ' '|tr 'A-Z' 'a-z'|tr -d -c 'a-z\n'
+tcpdump -i eth0: dump network data on eth0
+traceroute www.google.com: track the route information to destination
+arp, rarp: scan the local network to detect the relationship between MAC and IP.
+LD_DEBUG=all ldd [bin file]: show debug information for bin file.
+  LD_DEBUG=help ldd: show LD_DEBUG parameters.
+sudo dmidecode: Desktop Management Interface decode, to show more hardware information.
+sudo lshw: list all hardware information in this machine.
+sudo blkid: list all block id.
+pandoc -t html test1.md |lynx -stdin: markdown reviewer in command line.
+taskset: set task to specified cpu cores.
+aarch64-linux-gnu-objdump -h -S vmlinux > vmlinux.elf: dump elf(or object) file into readable text format.
+blkio: list all block device's UUID and PARTUUID.
+sudo hdparm -tT /dev/sda: show hard disk performance parameters.
+nc: remote port connection test by TCP or UDP.
+	nc -w 2 -v 192.168.1.100 80
+ps aux: list all process information.
+sudo lsof -Pni :<port number>: show specified port's status
+netstat -an: show network status numbric.
+sync: sync cache data to write queue, fsync will flush data into HD then return.
+w: show all users logging in system.
+usermod -aG <group> <user> : add user into specified group.
+sloccount: A simple tool to count source code.
+kill -9 <pid>, killall <pname>, pkill <pname>: kill process by process's id or process's name.
+ulimit: set resource limitation for user.
+iperf: network performance estimation tool
+	server: iperf -s -w 256k
+	client: iperf -c <host ip> -P 4 -t 100 -i 1 -w 256k
+stream: http://sourceforge.net/projects/lmbench, make OS=lmbench && cd src && make
+	stream -v 2 -M 200M -P 64
+numactl -H: numa information
+awk: pattern scanning and text processing language, e.g.: cat /etc/passwd |awk  -F ':'  'BEGIN {print "Name\tBash"} /bash/{print $1"\t"$NF} END {print "================"}'
+netstat -n|grep tcp|grep <port>|awk '/^tcp/{++state[$NF]} END {for(key in state) print key,"\t",state[key]}': statistic of network information.
+netstat -n|grep tcp|awk '/^tcp/{if (!($4 in local)) {++local[$4];++state[$NF]}} END {for(key in state) print key,"\t",state[key]}'
+sysctl: /etc/sysctl.conf, sysctl -p
+	sysctl -w net.ipv4.tcp_tw_reuse=1
+	sysctl -w net.ipv4.tcp_tw_recycle=1
+	sysctl -w net.ipv4.tcp_max_tw_buckets=5000
+ethtool -s eth0 advertise 0x008: set network speed manually.
+ftrace function: cd /sys/kernel/debug/tracing, echo function > current_tracer, echo <function name> > set_ftrace_filter, echo <pid> > set_ftrace_pid, echo 1 > tracing_on, vim trace
+ftrace event: cd /sys/kernel/debug/tracing, echo <event name> > set_event, echo <pid> > set_ftrace_pid, echo 1 > tracing_on, vim trace.
+find -regextype help: Search all supported egex type.
+/etc/skel: default config for new users.
+flock: file lock
+	(
+		flock -s 100
+		...commands...
+	) 100>/var/lock/mylockfile
+ls >output.txt 2>&1: redirect all output information to file
+modinfo: show information about kernel module.
+tune2fs -l /dev/JustinD05-vg/root: tune ext2\ext3\ext4 filesystem's parameters
+resize2fs /dev/JustinD05-vg/root: online reisze filesystem
+mdadm: RAID management tool

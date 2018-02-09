@@ -1,0 +1,16 @@
+rebuild kernel image and ramdisk:
+  make
+  make install
+  make modules
+  make modules_install
+  sudo mkimage -A arm -O linux -T ramdisk -C gzip -a 0 -e 0 -n uInitrd -d /boot/<source initrd.img> <target uInitrd>: convert initrd to uInitrd
+  sudo mkimage -A arm -O linux -T kernel -C none -a 0x00080000 -e 0x00080000 -n "Image Name" -d /boot/<source vmlinuz> <target uImage>: convert vmlinuz to uImage
+
+boot system manually in uboot shell:
+  scsi init
+  ext4ls scsi 0 /
+  setenv bootargs 'rdinit=/init console=ttyS0,115200n8 root=/dev/sda2 rw rootwait'
+  ext4load scsi 0 ${kernel_addr_r} uImage-3.19.0-rc4
+  ext4load scsi 0 ${ramdisk_addr_r} uInitrd-3.19.0-rc4
+  ext4load scsi 0 ${fdt_addr_r} apm-mustang-3.19.0-rc4.dtb
+  bootm ${kernel_addr_r} ${ramdisk_addr_r} ${fdt_addr_r}
