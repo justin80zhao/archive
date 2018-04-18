@@ -5,9 +5,10 @@ OBJS := mytest.o
 BIN := ~/bin/
 
 # complier
-CC := gcc
+CC := g++
 # linker
-LD := ld
+#LD := ld
+LD := g++
 # archiver
 AR := ar
 
@@ -22,11 +23,11 @@ INCLUDES := -I/usr/include
 LIBS := 
 #DFLAGS := -DMY_MACRO=1 
 DFLAGS :=
-CFLAGS := -c -g -W -Wall -O2
-LFLAGS := 
+CFLAGS := -c -g -W -Wall -O2 -std=c++11
+LFLAGS := -pthread
 
 $(TARGET) : $(OBJS)
-	$(CC) $(LIBS) $(LFLAGS) -o $@ $<
+	$(LD) $(LIBS) $(LFLAGS) -o $@ $<
 	$(DUMP) -h -S $< > $(TARGET).elf
 
 %.o : %.c %.S
