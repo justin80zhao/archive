@@ -66,7 +66,7 @@ tr -c -d -s ['set1'] ['set2']: Simple string stream editor.
 tcpdump -i eth0: dump network data on eth0
 traceroute www.google.com: track the route information to destination
 arp, rarp: scan the local network to detect the relationship between MAC and IP.
-LD_DEBUG=all ldd [bin file]: show debug information for bin file.
+LD_DEBUG=all ldd [bin file]: show shared library and debug information for bin file.
   LD_DEBUG=help ldd: show LD_DEBUG parameters.
 sudo dmidecode: Desktop Management Interface decode, to show more hardware information.
 sudo lshw: list all hardware information in this machine.
