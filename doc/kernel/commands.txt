@@ -115,3 +115,4 @@ modinfo: show information about kernel module.
 tune2fs -l /dev/JustinD05-vg/root: tune ext2\ext3\ext4 filesystem's parameters
 resize2fs /dev/JustinD05-vg/root: online reisze filesystem
 mdadm: RAID management tool
+sudo checkinstall: build deb package.
