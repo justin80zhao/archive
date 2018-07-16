@@ -117,3 +117,6 @@ resize2fs /dev/JustinD05-vg/root: online reisze filesystem
 mdadm: RAID management tool
 sudo checkinstall: build deb package.
 dkms status: Dynamic Kerenel Module Support, dynamically build kernel moudle from source code.
+KVM install and boot:
+    kvm -hda raw.img -cdrom <xxx.iso> -boot d -m 4G
+    kvm -hda raw.img -boot d -m 4G
