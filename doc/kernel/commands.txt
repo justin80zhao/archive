@@ -120,3 +120,4 @@ dkms status: Dynamic Kerenel Module Support, dynamically build kernel moudle fro
 KVM install and boot:
     kvm -hda raw.img -cdrom <xxx.iso> -boot d -m 4G
     kvm -hda raw.img -boot d -m 4G
+sudo qemu-system-x86_64 -dirve format=raw -kernel </boot/vmlinux> -initrd </boot/initrd> -append "console=ttyS0" -nographic -m 8G -smp 8 -enable-kvm <raw.img>
