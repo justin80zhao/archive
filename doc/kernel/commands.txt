@@ -121,3 +121,4 @@ KVM install and boot:
     kvm -hda <raw.img> -cdrom <xxx.iso> -boot d -m 4G
     kvm -hda <raw.img> -boot d -m 4G
 sudo qemu-system-x86_64 -hda <raw.img> -kernel </boot/vmlinux> -initrd </boot/initrd> -append "console=ttyS0, root=/dev/sda" -nographic -m 8G -smp 8 -enable-kvm
+sudo qemu-system-x86_64 -kernel </boot/vmlinux> -drive if=none,file=<raw.img>,id=rootfs -device virtio-blk-device,drive=rootfs -append "console=ttyS0, root=/dev/vda rw" -nographic -m 8G -smp 8 -device virtio-net-device,netdev=net0 -netdev user,id=net0 -enable-kvm
