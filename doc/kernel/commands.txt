@@ -130,9 +130,10 @@ LVM configuration:
 	sudo fdisk /dev/sdb
 	sudo pvcreate /dev/sdb1
 	sudo pvdisplay | sudo pvs
-	sudo vgcreate <vgname> <pvname1> [pvname2 [pvname3]]
+	sudo vgcreate <vgname> <pvname1> [pvname2 [pvname3...]]
 	sudo vgdisplay | sudo vgs
+	sudo vgextend <vgname> <pvname1> [pvname2 [pvname3...]]
 	sudo lvcreate <-L +<size, 100G> | -l +<PE number>> <lvname> <vgname>
 	sudo lvdisplay | sudo lvs
-	sudo lvextend <-L +<size, 10G> | -l +<PE number>> </dev/mapper/vgname-lvname>
-	sudo resize2fs </dev/mapper/vgname-lvname>
+	sudo lvextend <-L +<size, 10G> | -l +<PE number>> <dev path, /dev/mapper/vgname-lvname>
+	sudo resize2fs <dev path, /dev/mapper/vgname-lvname>
