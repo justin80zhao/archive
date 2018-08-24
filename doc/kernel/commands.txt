@@ -137,3 +137,4 @@ LVM configuration:
 	sudo lvdisplay | sudo lvs
 	sudo lvextend <-L +<size, 10G> | -l +<PE number>> <dev path, /dev/mapper/vgname-lvname>
 	sudo resize2fs <dev path, /dev/mapper/vgname-lvname>
+Network Load Tools: iftop, nload, ifconfig 
