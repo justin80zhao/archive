@@ -138,3 +138,4 @@ LVM configuration:
 	sudo lvextend <-L +<size, 10G> | -l +<PE number>> <dev path, /dev/mapper/vgname-lvname>
 	sudo resize2fs <dev path, /dev/mapper/vgname-lvname>
 Network Load Tools: iftop, nload, ifconfig 
+fuser <file or directory, e.g.: /mnt>: show the user who is accessing the corresponding file or directory.
