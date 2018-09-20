@@ -28,7 +28,7 @@ LFLAGS := -pthread
 
 $(TARGET) : $(OBJS)
 	$(LD) $(LIBS) $(LFLAGS) -o $@ $<
-	$(DUMP) -h -S $< > $(TARGET).elf
+	$(DUMP) -h -S $@ > $(TARGET).elf
 
 %.o : %.c %.S
 	$(CC) $(INCLUDES) $(CFLAGS) -o $@ $<
