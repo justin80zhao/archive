@@ -139,3 +139,4 @@ LVM configuration:
 	sudo resize2fs <dev path, /dev/mapper/vgname-lvname>
 Network Load Tools: iftop, nload, ifconfig 
 fuser <file or directory, e.g.: /mnt>: show the user who is accessing the corresponding file or directory.
+sudo iptables -t nat -A PREROUTING -d <old dest IP> -j DNAT --to-destination <new dest IP>
