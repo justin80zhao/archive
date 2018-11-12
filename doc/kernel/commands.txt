@@ -140,3 +140,4 @@ LVM configuration:
 Network Load Tools: iftop, nload, ifconfig 
 fuser <file or directory, e.g.: /mnt>: show the user who is accessing the corresponding file or directory.
 sudo iptables -t nat -A PREROUTING -d <old dest IP> -j DNAT --to-destination <new dest IP>
+expr $(expr `date +%s` - `date -d "2018-1-1" +%s`) / 86400: Calculate days between two different date.
