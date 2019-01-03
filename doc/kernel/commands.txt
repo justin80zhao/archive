@@ -145,4 +145,4 @@ Burp Suite: Web attack tools run in window.
 readelf <bin file>: read elf information from binary.
 deb package: An installable ar package in Debian and Ubuntu, can be unpackaged by "ar" command.
 apt-rdepends: apt-rdepends --state-follow=installed -d ${line} [-r], apt package dependency relationship analyse tool.
-chmod u+s <file>: setuid for file, get the owner's right during exexcuting, chmod g+s <dir>: setgid; chmod o+s <dir>: set sticky bit, delete forbididen.
+chmod u+s <file>: setuid for file, get the owner's right during exexcuting, chmod g+s <dir>: setgid; chmod o+t <dir>: set sticky bit, delete forbididen.
