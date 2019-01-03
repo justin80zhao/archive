@@ -143,3 +143,5 @@ sudo iptables -t nat -A PREROUTING -d <old dest IP> -j DNAT --to-destination <ne
 expr $(expr `date +%s` - `date -d "2018-1-1" +%s`) / 86400: Calculate days between two different date.
 Burp Suite: Web attack tools run in window.
 readelf <bin file>: read elf information from binary.
+deb package: An installable ar package in Debian and Ubuntu, can be unpackaged by "ar" command.
+apt-rdepends: apt-rdepends --state-follow=installed -d ${line} [-r], apt package dependency relationship analyse tool.
