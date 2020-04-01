@@ -24,8 +24,9 @@ INCLUDES := -I/usr/include
 LIBS := 
 #DFLAGS := -DMY_MACRO=1 
 DFLAGS :=
-CFLAGS := -c -g -W -Wall -O2 -std=c++11
-LFLAGS := -pthread
+#CFLAGS := -c -g -W -Wall -O2 -std=c++11
+CFLAGS := -c -g -W -Wall -O2
+#LFLAGS := -pthread
 
 $(TARGET) : $(OBJS)
 	$(LD) $(LIBS) $(LFLAGS) -o $@ $<
