@@ -17,7 +17,7 @@ char check_copy(char *pSrc, char *pDest, unsigned int *pSum, int len)
     "1: \n\t"
     "ldr w14, [x10] \n\t"
     "mov w15, w13 \n\t"
-//    "crc32w w13, w15, w14 \n\t"
+    "crc32w w13, w15, w14 \n\t"
     "str w14, [x11] \n\t"
     "add x10, x10, #0x04 \n\t"
     "add x11, x11, #0x04 \n\t"

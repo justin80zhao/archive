@@ -25,7 +25,7 @@ LIBS :=
 #DFLAGS := -DMY_MACRO=1 
 DFLAGS :=
 #CFLAGS := -c -g -W -Wall -O2 -std=c++11
-CFLAGS := -c -g -W -Wall -O2
+CFLAGS := -c -g -W -Wall -O2 -mcpu=generic+crc
 #LFLAGS := -pthread
 
 $(TARGET) : $(OBJS)
