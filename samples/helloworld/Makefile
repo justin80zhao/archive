@@ -27,7 +27,7 @@ CFLAGS := -c -g -W -Wall -O2 -std=c++11
 LFLAGS := -pthread
 
 $(TARGET) : $(OBJS)
-	$(LD) $(LIBS) $(LFLAGS) -o $@ $<
+	$(LD) $(LIBS) $(LFLAGS) -o $@ $(OBJS)
 	$(DUMP) -h -S $@ > $(TARGET).elf
 
 %.o : %.c %.S
